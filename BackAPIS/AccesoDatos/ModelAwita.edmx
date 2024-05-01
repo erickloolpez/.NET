@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IntegracionDBBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="creado_en" Type="datetime" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="suscripcion_id" Type="varchar" MaxLength="255" />
+          <Property Name="plan_historial_id" Type="int" />
+          <Property Name="fecha_inicio" Type="date" Nullable="false" />
+          <Property Name="fecha_final" Type="date" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="factura_cancelada" Type="datetime" />
+        </EntityType>
+        <EntityType Name="historial_plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="suscripcion_id" Type="varchar" MaxLength="255" />
+          <Property Name="plan_id" Type="varchar" MaxLength="10" />
+          <Property Name="fecha_comienzo" Type="date" Nullable="false" />
+          <Property Name="fecha_final" Type="date" Nullable="false" />
+          <Property Name="creado_en" Type="datetime" />
+        </EntityType>
+        <EntityType Name="planes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="creado_en" Type="datetime" />
+        </EntityType>
+        <EntityType Name="suscripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cliente_id" Type="varchar" MaxLength="10" />
+          <Property Name="plan_id" Type="varchar" MaxLength="10" />
+          <Property Name="fecha_suscripcion" Type="date" Nullable="false" />
+          <Property Name="creado_en" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__factura__plan_hi__44FF419A">
+          <End Role="historial_plan" Type="Self.historial_plan" Multiplicity="0..1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="historial_plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="plan_historial_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__factura__suscrip__45F365D3">
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="0..1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="suscripcion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="suscripcion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__historial__plan___440B1D61">
+          <End Role="planes" Type="Self.planes" Multiplicity="0..1" />
+          <End Role="historial_plan" Type="Self.historial_plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="planes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historial_plan">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__historial__suscr__47DBAE45">
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="0..1" />
+          <End Role="historial_plan" Type="Self.historial_plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="suscripcion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historial_plan">
+              <PropertyRef Name="suscripcion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__suscripci__clien__4316F928">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="suscripcion">
+              <PropertyRef Name="cliente_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__suscripci__plan___46E78A0C">
+          <End Role="planes" Type="Self.planes" Multiplicity="0..1" />
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="planes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="suscripcion">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_ID_Suscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_IngresosPorPlan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_MostrarPagosPMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cedula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SuscripcionesPorPlan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_TestBanca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UltimoID_Suscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="IntegracionDBBModelStoreContainer">
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="historial_plan" EntityType="Self.historial_plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="planes" EntityType="Self.planes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="suscripcion" EntityType="Self.suscripcion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__factura__plan_hi__44FF419A" Association="Self.FK__factura__plan_hi__44FF419A">
+            <End Role="historial_plan" EntitySet="historial_plan" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__factura__suscrip__45F365D3" Association="Self.FK__factura__suscrip__45F365D3">
+            <End Role="suscripcion" EntitySet="suscripcion" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__historial__plan___440B1D61" Association="Self.FK__historial__plan___440B1D61">
+            <End Role="planes" EntitySet="planes" />
+            <End Role="historial_plan" EntitySet="historial_plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__historial__suscr__47DBAE45" Association="Self.FK__historial__suscr__47DBAE45">
+            <End Role="suscripcion" EntitySet="suscripcion" />
+            <End Role="historial_plan" EntitySet="historial_plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__suscripci__clien__4316F928" Association="Self.FK__suscripci__clien__4316F928">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="suscripcion" EntitySet="suscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__suscripci__plan___46E78A0C" Association="Self.FK__suscripci__plan___46E78A0C">
+            <End Role="planes" EntitySet="planes" />
+            <End Role="suscripcion" EntitySet="suscripcion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IntegracionDBBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="creado_en" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="suscripcion" Relationship="Self.FK__suscripci__clien__4316F928" FromRole="cliente" ToRole="suscripcion" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="suscripcion_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="plan_historial_id" Type="Int32" />
+          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_final" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="total" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="factura_cancelada" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="historial_plan" Relationship="Self.FK__factura__plan_hi__44FF419A" FromRole="factura" ToRole="historial_plan" />
+          <NavigationProperty Name="suscripcion" Relationship="Self.FK__factura__suscrip__45F365D3" FromRole="factura" ToRole="suscripcion" />
+        </EntityType>
+        <EntityType Name="historial_plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="suscripcion_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="plan_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_comienzo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_final" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="creado_en" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="factura" Relationship="Self.FK__factura__plan_hi__44FF419A" FromRole="historial_plan" ToRole="factura" />
+          <NavigationProperty Name="planes" Relationship="Self.FK__historial__plan___440B1D61" FromRole="historial_plan" ToRole="planes" />
+          <NavigationProperty Name="suscripcion" Relationship="Self.FK__historial__suscr__47DBAE45" FromRole="historial_plan" ToRole="suscripcion" />
+        </EntityType>
+        <EntityType Name="planes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="creado_en" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="historial_plan" Relationship="Self.FK__historial__plan___440B1D61" FromRole="planes" ToRole="historial_plan" />
+          <NavigationProperty Name="suscripcion" Relationship="Self.FK__suscripci__plan___46E78A0C" FromRole="planes" ToRole="suscripcion" />
+        </EntityType>
+        <EntityType Name="suscripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cliente_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="plan_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_suscripcion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="creado_en" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="cliente" Relationship="Self.FK__suscripci__clien__4316F928" FromRole="suscripcion" ToRole="cliente" />
+          <NavigationProperty Name="factura" Relationship="Self.FK__factura__suscrip__45F365D3" FromRole="suscripcion" ToRole="factura" />
+          <NavigationProperty Name="historial_plan" Relationship="Self.FK__historial__suscr__47DBAE45" FromRole="suscripcion" ToRole="historial_plan" />
+          <NavigationProperty Name="planes" Relationship="Self.FK__suscripci__plan___46E78A0C" FromRole="suscripcion" ToRole="planes" />
+        </EntityType>
+        <Association Name="FK__suscripci__clien__4316F928">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="suscripcion">
+              <PropertyRef Name="cliente_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__factura__plan_hi__44FF419A">
+          <End Role="historial_plan" Type="Self.historial_plan" Multiplicity="0..1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="historial_plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="plan_historial_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__factura__suscrip__45F365D3">
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="0..1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="suscripcion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="suscripcion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__historial__plan___440B1D61">
+          <End Role="planes" Type="Self.planes" Multiplicity="0..1" />
+          <End Role="historial_plan" Type="Self.historial_plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="planes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historial_plan">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__historial__suscr__47DBAE45">
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="0..1" />
+          <End Role="historial_plan" Type="Self.historial_plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="suscripcion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historial_plan">
+              <PropertyRef Name="suscripcion_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__suscripci__plan___46E78A0C">
+          <End Role="planes" Type="Self.planes" Multiplicity="0..1" />
+          <End Role="suscripcion" Type="Self.suscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="planes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="suscripcion">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IntegracionDBBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cliente" EntityType="Self.cliente" />
+          <EntitySet Name="factura" EntityType="Self.factura" />
+          <EntitySet Name="historial_plan" EntityType="Self.historial_plan" />
+          <EntitySet Name="planes" EntityType="Self.planes" />
+          <EntitySet Name="suscripcion" EntityType="Self.suscripcion" />
+          <AssociationSet Name="FK__suscripci__clien__4316F928" Association="Self.FK__suscripci__clien__4316F928">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="suscripcion" EntitySet="suscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__factura__plan_hi__44FF419A" Association="Self.FK__factura__plan_hi__44FF419A">
+            <End Role="historial_plan" EntitySet="historial_plan" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__factura__suscrip__45F365D3" Association="Self.FK__factura__suscrip__45F365D3">
+            <End Role="suscripcion" EntitySet="suscripcion" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__historial__plan___440B1D61" Association="Self.FK__historial__plan___440B1D61">
+            <End Role="planes" EntitySet="planes" />
+            <End Role="historial_plan" EntitySet="historial_plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__historial__suscr__47DBAE45" Association="Self.FK__historial__suscr__47DBAE45">
+            <End Role="suscripcion" EntitySet="suscripcion" />
+            <End Role="historial_plan" EntitySet="historial_plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__suscripci__plan___46E78A0C" Association="Self.FK__suscripci__plan___46E78A0C">
+            <End Role="planes" EntitySet="planes" />
+            <End Role="suscripcion" EntitySet="suscripcion" />
+          </AssociationSet>
+          <FunctionImport Name="sp_IngresosPorPlan" ReturnType="Collection(IntegracionDBBModel.sp_IngresosPorPlan_Result)" />
+          <FunctionImport Name="sp_MostrarPagosPMA" ReturnType="Collection(IntegracionDBBModel.sp_MostrarPagosPMA_Result)">
+          <Parameter Name="cedula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SuscripcionesPorPlan" ReturnType="Collection(IntegracionDBBModel.sp_SuscripcionesPorPlan_Result)" />
+          <FunctionImport Name="sp_TestBanca" ReturnType="Collection(IntegracionDBBModel.sp_TestBanca_Result)">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UltimoID_Suscripcion" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_ID_Suscripcion" ReturnType="Collection(IntegracionDBBModel.sp_ID_Suscripcion_Result)" />
+        </EntityContainer>
+        <ComplexType Name="sp_IngresosPorPlan_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Ingresos_Totales" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_MostrarPagosPMA_Result">
+          <Property Type="String" Name="cliente_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="cod_pago" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="8" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_SuscripcionesPorPlan_Result">
+          <Property Type="String" Name="Nombre_del_plan" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Número_de_suscripciones" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_TestBanca_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="DateTime" Name="fecha_suscripcion" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ID_Suscripcion_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="cliente_id" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="plan_id" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="fecha_suscripcion" Nullable="false" />
+          <Property Type="DateTime" Name="creado_en" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IntegracionDBBModelStoreContainer" CdmEntityContainer="IntegracionDBBEntities">
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="IntegracionDBBModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="factura">
+            <EntityTypeMapping TypeName="IntegracionDBBModel.factura">
+              <MappingFragment StoreEntitySet="factura">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="suscripcion_id" ColumnName="suscripcion_id" />
+                <ScalarProperty Name="plan_historial_id" ColumnName="plan_historial_id" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="factura_cancelada" ColumnName="factura_cancelada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historial_plan">
+            <EntityTypeMapping TypeName="IntegracionDBBModel.historial_plan">
+              <MappingFragment StoreEntitySet="historial_plan">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="suscripcion_id" ColumnName="suscripcion_id" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="fecha_comienzo" ColumnName="fecha_comienzo" />
+                <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
+                <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="planes">
+            <EntityTypeMapping TypeName="IntegracionDBBModel.planes">
+              <MappingFragment StoreEntitySet="planes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suscripcion">
+            <EntityTypeMapping TypeName="IntegracionDBBModel.suscripcion">
+              <MappingFragment StoreEntitySet="suscripcion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="fecha_suscripcion" ColumnName="fecha_suscripcion" />
+                <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_IngresosPorPlan" FunctionName="IntegracionDBBModel.Store.sp_IngresosPorPlan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_IngresosPorPlan_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Ingresos_Totales" ColumnName="Ingresos Totales" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_MostrarPagosPMA" FunctionName="IntegracionDBBModel.Store.sp_MostrarPagosPMA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_MostrarPagosPMA_Result">
+                <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+                <ScalarProperty Name="cod_pago" ColumnName="cod_pago" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SuscripcionesPorPlan" FunctionName="IntegracionDBBModel.Store.sp_SuscripcionesPorPlan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_SuscripcionesPorPlan_Result">
+                <ScalarProperty Name="Nombre_del_plan" ColumnName="Nombre del plan" />
+                <ScalarProperty Name="Número_de_suscripciones" ColumnName="Número de suscripciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_TestBanca" FunctionName="IntegracionDBBModel.Store.sp_TestBanca">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_TestBanca_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="fecha_suscripcion" ColumnName="fecha_suscripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UltimoID_Suscripcion" FunctionName="IntegracionDBBModel.Store.sp_UltimoID_Suscripcion" />
+          <FunctionImportMapping FunctionImportName="sp_ID_Suscripcion" FunctionName="IntegracionDBBModel.Store.sp_ID_Suscripcion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_ID_Suscripcion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="fecha_suscripcion" ColumnName="fecha_suscripcion" />
+                <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

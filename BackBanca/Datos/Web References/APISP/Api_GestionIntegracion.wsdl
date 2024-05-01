@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="tomaTransaccion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tomaTransaccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tomaTransaccionResult" type="tns:ArrayOfDTOAwita" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDTOAwita">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DTOAwita" nillable="true" type="tns:DTOAwita" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DTOAwita">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cuenta_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="monto" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="tomaTransaccionSoapIn">
+    <wsdl:part name="parameters" element="tns:tomaTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="tomaTransaccionSoapOut">
+    <wsdl:part name="parameters" element="tns:tomaTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Api_GestionIntegracionSoap">
+    <wsdl:operation name="tomaTransaccion">
+      <wsdl:input message="tns:tomaTransaccionSoapIn" />
+      <wsdl:output message="tns:tomaTransaccionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Api_GestionIntegracionSoap" type="tns:Api_GestionIntegracionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="tomaTransaccion">
+      <soap:operation soapAction="http://tempuri.org/tomaTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Api_GestionIntegracionSoap12" type="tns:Api_GestionIntegracionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="tomaTransaccion">
+      <soap12:operation soapAction="http://tempuri.org/tomaTransaccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Api_GestionIntegracion">
+    <wsdl:port name="Api_GestionIntegracionSoap" binding="tns:Api_GestionIntegracionSoap">
+      <soap:address location="http://localhost:9098/Api_GestionIntegracion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Api_GestionIntegracionSoap12" binding="tns:Api_GestionIntegracionSoap12">
+      <soap12:address location="http://localhost:9098/Api_GestionIntegracion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

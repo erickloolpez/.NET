@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SuscripcionesPorPlan">
+        <s:complexType />
+      </s:element>
+      <s:element name="SuscripcionesPorPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuscripcionesPorPlanResult" type="tns:ArrayOfSp_SuscripcionesPorPlan_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSp_SuscripcionesPorPlan_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="sp_SuscripcionesPorPlan_Result" nillable="true" type="tns:sp_SuscripcionesPorPlan_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="sp_SuscripcionesPorPlan_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre_del_plan" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Número_de_suscripciones" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TotalFacturadoPorCliente">
+        <s:complexType />
+      </s:element>
+      <s:element name="TotalFacturadoPorClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TotalFacturadoPorClienteResult" type="tns:ArrayOfSp_TotalFacturadoPorCliente_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSp_TotalFacturadoPorCliente_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="sp_TotalFacturadoPorCliente_Result" nillable="true" type="tns:sp_TotalFacturadoPorCliente_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="sp_TotalFacturadoPorCliente_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total_facturado" nillable="true" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IngresosPorPlan">
+        <s:complexType />
+      </s:element>
+      <s:element name="IngresosPorPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IngresosPorPlanResult" type="tns:ArrayOfSp_IngresosPorPlan_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSp_IngresosPorPlan_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="sp_IngresosPorPlan_Result" nillable="true" type="tns:sp_IngresosPorPlan_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="sp_IngresosPorPlan_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ingresos_Totales" nillable="true" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SuscripcionesPorPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:SuscripcionesPorPlan" />
+  </wsdl:message>
+  <wsdl:message name="SuscripcionesPorPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:SuscripcionesPorPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="TotalFacturadoPorClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:TotalFacturadoPorCliente" />
+  </wsdl:message>
+  <wsdl:message name="TotalFacturadoPorClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:TotalFacturadoPorClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IngresosPorPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:IngresosPorPlan" />
+  </wsdl:message>
+  <wsdl:message name="IngresosPorPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:IngresosPorPlanResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Api_GestionSPSoap">
+    <wsdl:operation name="SuscripcionesPorPlan">
+      <wsdl:input message="tns:SuscripcionesPorPlanSoapIn" />
+      <wsdl:output message="tns:SuscripcionesPorPlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TotalFacturadoPorCliente">
+      <wsdl:input message="tns:TotalFacturadoPorClienteSoapIn" />
+      <wsdl:output message="tns:TotalFacturadoPorClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IngresosPorPlan">
+      <wsdl:input message="tns:IngresosPorPlanSoapIn" />
+      <wsdl:output message="tns:IngresosPorPlanSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Api_GestionSPSoap" type="tns:Api_GestionSPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SuscripcionesPorPlan">
+      <soap:operation soapAction="http://tempuri.org/SuscripcionesPorPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TotalFacturadoPorCliente">
+      <soap:operation soapAction="http://tempuri.org/TotalFacturadoPorCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngresosPorPlan">
+      <soap:operation soapAction="http://tempuri.org/IngresosPorPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Api_GestionSPSoap12" type="tns:Api_GestionSPSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SuscripcionesPorPlan">
+      <soap12:operation soapAction="http://tempuri.org/SuscripcionesPorPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TotalFacturadoPorCliente">
+      <soap12:operation soapAction="http://tempuri.org/TotalFacturadoPorCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngresosPorPlan">
+      <soap12:operation soapAction="http://tempuri.org/IngresosPorPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Api_GestionSP">
+    <wsdl:port name="Api_GestionSPSoap" binding="tns:Api_GestionSPSoap">
+      <soap:address location="http://localhost:9098/Api_GestionSP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Api_GestionSPSoap12" binding="tns:Api_GestionSPSoap12">
+      <soap12:address location="http://localhost:9098/Api_GestionSP.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

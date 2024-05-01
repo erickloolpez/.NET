@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Listar">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarResult" type="tns:ArrayOfSuscripcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSuscripcion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="suscripcion" nillable="true" type="tns:suscripcion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="suscripcion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cliente" type="tns:cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="factura" type="tns:ArrayOfFactura" />
+          <s:element minOccurs="0" maxOccurs="1" name="historial_plan" type="tns:ArrayOfHistorial_plan" />
+          <s:element minOccurs="0" maxOccurs="1" name="planes" type="tns:planes" />
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cliente_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="plan_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_suscripcion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="creado_en" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="cliente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="suscripcion" type="tns:ArrayOfSuscripcion" />
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="creado_en" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFactura">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="factura" nillable="true" type="tns:factura" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="factura">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="suscripcion_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="plan_historial_id" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_inicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_final" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="factura_cancelada" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="historial_plan" type="tns:historial_plan" />
+          <s:element minOccurs="0" maxOccurs="1" name="suscripcion" type="tns:suscripcion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="historial_plan">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="factura" type="tns:ArrayOfFactura" />
+          <s:element minOccurs="0" maxOccurs="1" name="planes" type="tns:planes" />
+          <s:element minOccurs="0" maxOccurs="1" name="suscripcion" type="tns:suscripcion" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="suscripcion_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="plan_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_comienzo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_final" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="creado_en" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="planes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="historial_plan" type="tns:ArrayOfHistorial_plan" />
+          <s:element minOccurs="0" maxOccurs="1" name="suscripcion" type="tns:ArrayOfSuscripcion" />
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="creado_en" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHistorial_plan">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="historial_plan" nillable="true" type="tns:historial_plan" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LeerID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeerIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LeerIDResult" type="tns:suscripcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarFiltro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="info" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarFiltroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarFiltroResult" type="tns:ArrayOfSuscripcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insertar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="suscripcion_nueva" type="tns:suscripcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Actualizar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="suscripcion_actualizada" type="tns:suscripcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Eliminar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="suscripcion_eliminada" type="tns:suscripcion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarSoapIn">
+    <wsdl:part name="parameters" element="tns:Listar" />
+  </wsdl:message>
+  <wsdl:message name="ListarSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeerIDSoapIn">
+    <wsdl:part name="parameters" element="tns:LeerID" />
+  </wsdl:message>
+  <wsdl:message name="LeerIDSoapOut">
+    <wsdl:part name="parameters" element="tns:LeerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarFiltroSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarFiltro" />
+  </wsdl:message>
+  <wsdl:message name="ListarFiltroSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarFiltroResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarSoapIn">
+    <wsdl:part name="parameters" element="tns:Insertar" />
+  </wsdl:message>
+  <wsdl:message name="InsertarSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarSoapIn">
+    <wsdl:part name="parameters" element="tns:Actualizar" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSoapIn">
+    <wsdl:part name="parameters" element="tns:Eliminar" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Api_GestionSuscripcionSoap">
+    <wsdl:operation name="Listar">
+      <wsdl:input message="tns:ListarSoapIn" />
+      <wsdl:output message="tns:ListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LeerID">
+      <wsdl:input message="tns:LeerIDSoapIn" />
+      <wsdl:output message="tns:LeerIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFiltro">
+      <wsdl:input message="tns:ListarFiltroSoapIn" />
+      <wsdl:output message="tns:ListarFiltroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insertar">
+      <wsdl:input message="tns:InsertarSoapIn" />
+      <wsdl:output message="tns:InsertarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar">
+      <wsdl:input message="tns:ActualizarSoapIn" />
+      <wsdl:output message="tns:ActualizarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <wsdl:input message="tns:EliminarSoapIn" />
+      <wsdl:output message="tns:EliminarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Api_GestionSuscripcionSoap" type="tns:Api_GestionSuscripcionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Listar">
+      <soap:operation soapAction="http://tempuri.org/Listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeerID">
+      <soap:operation soapAction="http://tempuri.org/LeerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFiltro">
+      <soap:operation soapAction="http://tempuri.org/ListarFiltro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insertar">
+      <soap:operation soapAction="http://tempuri.org/Insertar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar">
+      <soap:operation soapAction="http://tempuri.org/Actualizar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <soap:operation soapAction="http://tempuri.org/Eliminar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Api_GestionSuscripcionSoap12" type="tns:Api_GestionSuscripcionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Listar">
+      <soap12:operation soapAction="http://tempuri.org/Listar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeerID">
+      <soap12:operation soapAction="http://tempuri.org/LeerID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFiltro">
+      <soap12:operation soapAction="http://tempuri.org/ListarFiltro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insertar">
+      <soap12:operation soapAction="http://tempuri.org/Insertar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar">
+      <soap12:operation soapAction="http://tempuri.org/Actualizar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <soap12:operation soapAction="http://tempuri.org/Eliminar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Api_GestionSuscripcion">
+    <wsdl:port name="Api_GestionSuscripcionSoap" binding="tns:Api_GestionSuscripcionSoap">
+      <soap:address location="http://localhost:9098/Api_GestionSuscripcion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Api_GestionSuscripcionSoap12" binding="tns:Api_GestionSuscripcionSoap12">
+      <soap12:address location="http://localhost:9098/Api_GestionSuscripcion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
