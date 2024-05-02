@@ -408,6 +408,11 @@ nav {
     font-size: 15px;
 }
 
+    .options-content button:hover {
+        cursor:pointer;
+        background-image: -webkit-linear-gradient( 0deg, rgb(245,105,22) 0%, rgb(241,171,15) 100%);
+    }
+
 .options-content > p:last-of-type {
     font-size: 15px;
     color: #1D75FA;
@@ -417,6 +422,218 @@ nav {
 .refresh {
     border: 2px dashed #1D75FA;
 }
+
+/*This are the Payment Section*/
+.payment {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 18% 82%;
+    grid-template-columns: 100%;
+}
+
+.payment-container{
+    width :100%;
+    height:100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+}
+
+.nav-two {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(./assets/img/second.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-inline: 20px;
+}
+
+.nav-two--logo{
+    width: 200px;
+    height: 100%;
+}
+    .nav-two--logo img {
+        width: 120px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+.nav-two--menu {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-img {
+    width:100%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+}
+
+.payment-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.payment-invoice {
+    align-self: center;
+    width: 70%;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+    .payment-invoice p, strong {
+        font-size: 28px;
+    }
+
+    .payment-invoice h1 {
+        font-size: 52px;
+        font-family: 'Rubik';
+    }
+
+.payment-invoice--container {
+    width: 100%;
+    height: 110px;
+}
+
+.payment-invoice--name {
+    margin-bottom: 22px;
+}
+
+.payment-invoice--name, .payment-invoice--info {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .payment-invoice--name input, .payment-invoice--info input {
+        width: 48%;
+        height: 44px;
+        border-radius: 4px;
+        border: 1px solid #6D6D91;
+        padding-left: 12px;
+    }
+
+.inputCI {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #6D6D91;
+    padding-left: 12px;
+}
+
+.payment-invoice button {
+    width: 30%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #6D6D91;
+    color: white;
+    text-transform: uppercase;
+    background-color: #5E17DF;
+    padding: 8px;
+}
+
+
+
+/*Section of Footer*/
+
+footer {
+    width: 100%;
+    height: 40vh;
+    background-image: url('./assets/img/footer.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+
+.footer-description {
+    width: 80%;
+    height: 264px;
+    justify-self: end;
+    align-self: center;
+}
+
+    .footer-description img {
+        width: 160px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    .footer-description p {
+        width: 90%;
+        font-family: 'Roboto';
+        padding-inline: 8px;
+        color: #bdbdbd;
+    }
+
+.footer-description--icons {
+    width: 50%;
+    height: 40px;
+    margin-top: 30px;
+    padding-inline: 8px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icons-footer {
+    width: 28px;
+    height: 30px;
+    background-color: #1D417B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.footer-list {
+    display: flex;
+    gap: 180px;
+    height: 264px;
+    align-self: center;
+}
+
+.footer-list--content h2 {
+    position: relative;
+    margin-top: 38px;
+    font-family: 'Rubik';
+    font-size: 18px;
+    color: white;
+    font-weight: lighter;
+}
+
+    .footer-list--content h2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        height: 4px;
+        width: 80px;
+        background: url('./assets/img/f-line.png') no-repeat;
+    }
+
+.footer-list--content ul {
+    list-style: none;
+}
+
+    .footer-list--content ul li {
+        margin-top: 14px;
+    }
+
+        .footer-list--content ul li a {
+            text-decoration: none;
+            color: #bdbdbd;
+        }
+
 
 
 /*This are the aside section*/
@@ -707,7 +924,7 @@ aside {
 
 /*Section of Table*/
 
-.active-table{
+.active-table {
     display: none;
 }
 
@@ -875,12 +1092,12 @@ tbody tr {
         background-color: #6fcaea;
     }
 
-.sectionCharts{
+.sectionCharts {
     display: flex;
 }
 
 .containerCharts {
-    width:50%;
+    width: 50%;
     margin-top: 40px;
     position: relative;
 }
@@ -922,76 +1139,76 @@ tbody tr {
 
 /*Table Decoration*/
 
-.updatePanel-header{
+.updatePanel-header {
     display: flex;
-    justify-content:space-between;
-    padding:.8rem 1rem;
+    justify-content: space-between;
+    padding: .8rem 1rem;
 }
 
-.updatePanel-header--divider{
-    position:relative;
-    width:50%;
+.updatePanel-header--divider {
+    position: relative;
+    width: 50%;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-#TextBox1, #TextBox2, #TextBox3, #TextBox4{
-    width:68%;
-    border-radius:25px;
+#TextBox1, #TextBox2, #TextBox3, #TextBox4 {
+    width: 68%;
+    border-radius: 25px;
     border: 1px solid black;
     transition: .2s;
 }
 
-.searchIcon{
-    position:absolute;
-    right:4px;
+.searchIcon {
+    position: absolute;
+    right: 4px;
 }
 
-#Button1{
-    width:70px;
+#Button1 {
+    width: 70px;
 }
 
-#Button2{
-    width:70px;
+#Button2 {
+    width: 70px;
 }
 
-#Button4{
-    width:70px;
+#Button4 {
+    width: 70px;
 }
 
-#Button5{
-    width:70px;
+#Button5 {
+    width: 70px;
 }
 
 /*Control of formsView*/
 
-#FormView1, #FormView2, #FormView3, #FormView4{
+#FormView1, #FormView2, #FormView3, #FormView4 {
     background-color: #fff;
     display: flex;
     justify-content: center;
     border-radius: 18px;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
-#FormView1 tbody tr td {
-    display: flex;
-    align-items: center;
-}
+    #FormView1 tbody tr td {
+        display: flex;
+        align-items: center;
+    }
 
-#FormView2 tbody tr td{
-    display: flex;
-    align-items: center;
-}
+    #FormView2 tbody tr td {
+        display: flex;
+        align-items: center;
+    }
 
-#FormView3 tbody tr td {
-    display: flex;
-    align-items: center;
-}
+    #FormView3 tbody tr td {
+        display: flex;
+        align-items: center;
+    }
 
-#FormView4 tbody tr td{
-    display: flex;
-    align-items: center;
-}
+    #FormView4 tbody tr td {
+        display: flex;
+        align-items: center;
+    }
 
 
 

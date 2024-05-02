@@ -75,7 +75,11 @@
     <Content Include="src\assets\img\background.png" />
     <Content Include="src\assets\img\backgroundTwo.png" />
     <Content Include="src\assets\img\bottellon.png" />
+    <Content Include="src\assets\img\contact-img2.png" />
+    <Content Include="src\assets\img\f-line.png" />
+    <Content Include="src\assets\img\footer.png" />
     <Content Include="src\assets\img\rayas.png" />
+    <Content Include="src\assets\img\second.png" />
     <Content Include="src\assets\svg\check.svg" />
     <Content Include="src\assets\svg\facebook.svg" />
     <Content Include="src\assets\svg\linkedin.svg" />
@@ -83,10 +87,10 @@
     <Content Include="src\assets\svg\mail.svg" />
     <Content Include="src\assets\svg\menu.svg" />
     <Content Include="src\assets\svg\x-twitter.svg" />
-    <Content Include="src\browseNew.js" />
-    <Content Include="src\catch.js" />
+    <Content Include="src\express.js" />
+    <Content Include="src\vars.js" />
     <Content Include="src\main.js" />
-    <Content Include="src\newStyle.css" />
+    <Content Include="src\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
