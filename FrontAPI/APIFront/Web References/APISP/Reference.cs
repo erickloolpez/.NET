@@ -31,9 +31,9 @@ namespace APIFront.APISP {
         
         private System.Threading.SendOrPostCallback SuscripcionesPorPlanOperationCompleted;
         
-        private System.Threading.SendOrPostCallback TotalFacturadoPorClienteOperationCompleted;
-        
         private System.Threading.SendOrPostCallback IngresosPorPlanOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback TestBancaOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -77,10 +77,10 @@ namespace APIFront.APISP {
         public event SuscripcionesPorPlanCompletedEventHandler SuscripcionesPorPlanCompleted;
         
         /// <remarks/>
-        public event TotalFacturadoPorClienteCompletedEventHandler TotalFacturadoPorClienteCompleted;
+        public event IngresosPorPlanCompletedEventHandler IngresosPorPlanCompleted;
         
         /// <remarks/>
-        public event IngresosPorPlanCompletedEventHandler IngresosPorPlanCompleted;
+        public event TestBancaCompletedEventHandler TestBancaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SuscripcionesPorPlan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -110,33 +110,6 @@ namespace APIFront.APISP {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TotalFacturadoPorCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public sp_TotalFacturadoPorCliente_Result[] TotalFacturadoPorCliente() {
-            object[] results = this.Invoke("TotalFacturadoPorCliente", new object[0]);
-            return ((sp_TotalFacturadoPorCliente_Result[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void TotalFacturadoPorClienteAsync() {
-            this.TotalFacturadoPorClienteAsync(null);
-        }
-        
-        /// <remarks/>
-        public void TotalFacturadoPorClienteAsync(object userState) {
-            if ((this.TotalFacturadoPorClienteOperationCompleted == null)) {
-                this.TotalFacturadoPorClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTotalFacturadoPorClienteOperationCompleted);
-            }
-            this.InvokeAsync("TotalFacturadoPorCliente", new object[0], this.TotalFacturadoPorClienteOperationCompleted, userState);
-        }
-        
-        private void OnTotalFacturadoPorClienteOperationCompleted(object arg) {
-            if ((this.TotalFacturadoPorClienteCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.TotalFacturadoPorClienteCompleted(this, new TotalFacturadoPorClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IngresosPorPlan", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public sp_IngresosPorPlan_Result[] IngresosPorPlan() {
             object[] results = this.Invoke("IngresosPorPlan", new object[0]);
@@ -160,6 +133,35 @@ namespace APIFront.APISP {
             if ((this.IngresosPorPlanCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.IngresosPorPlanCompleted(this, new IngresosPorPlanCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TestBanca", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public sp_TestBanca_Result[] TestBanca(string id) {
+            object[] results = this.Invoke("TestBanca", new object[] {
+                        id});
+            return ((sp_TestBanca_Result[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TestBancaAsync(string id) {
+            this.TestBancaAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void TestBancaAsync(string id, object userState) {
+            if ((this.TestBancaOperationCompleted == null)) {
+                this.TestBancaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTestBancaOperationCompleted);
+            }
+            this.InvokeAsync("TestBanca", new object[] {
+                        id}, this.TestBancaOperationCompleted, userState);
+        }
+        
+        private void OnTestBancaOperationCompleted(object arg) {
+            if ((this.TestBancaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TestBancaCompleted(this, new TestBancaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -222,6 +224,51 @@ namespace APIFront.APISP {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class sp_TestBanca_Result {
+        
+        private string idField;
+        
+        private decimal precioField;
+        
+        private System.DateTime fecha_suscripcionField;
+        
+        /// <remarks/>
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal precio {
+            get {
+                return this.precioField;
+            }
+            set {
+                this.precioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime fecha_suscripcion {
+            get {
+                return this.fecha_suscripcionField;
+            }
+            set {
+                this.fecha_suscripcionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class sp_IngresosPorPlan_Result {
         
         private string nombreField;
@@ -246,40 +293,6 @@ namespace APIFront.APISP {
             }
             set {
                 this.ingresos_TotalesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class sp_TotalFacturadoPorCliente_Result {
-        
-        private string nombreField;
-        
-        private System.Nullable<decimal> total_facturadoField;
-        
-        /// <remarks/>
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<decimal> Total_facturado {
-            get {
-                return this.total_facturadoField;
-            }
-            set {
-                this.total_facturadoField = value;
             }
         }
     }
@@ -312,32 +325,6 @@ namespace APIFront.APISP {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void TotalFacturadoPorClienteCompletedEventHandler(object sender, TotalFacturadoPorClienteCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TotalFacturadoPorClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal TotalFacturadoPorClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public sp_TotalFacturadoPorCliente_Result[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((sp_TotalFacturadoPorCliente_Result[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void IngresosPorPlanCompletedEventHandler(object sender, IngresosPorPlanCompletedEventArgs e);
     
     /// <remarks/>
@@ -358,6 +345,32 @@ namespace APIFront.APISP {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((sp_IngresosPorPlan_Result[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void TestBancaCompletedEventHandler(object sender, TestBancaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TestBancaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TestBancaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public sp_TestBanca_Result[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((sp_TestBanca_Result[])(this.results[0]));
             }
         }
     }

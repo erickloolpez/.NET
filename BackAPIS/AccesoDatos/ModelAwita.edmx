@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IntegracionDBBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IntegracionDBBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="cliente">
           <Key>
             <PropertyRef Name="id" />
@@ -139,7 +139,6 @@
         <Function Name="sp_TestBanca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="sp_UltimoID_Suscripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IntegracionDBBModelStoreContainer">
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
@@ -171,7 +170,8 @@
             <End Role="suscripcion" EntitySet="suscripcion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IntegracionDBBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -342,25 +342,32 @@
             <End Role="planes" EntitySet="planes" />
             <End Role="suscripcion" EntitySet="suscripcion" />
           </AssociationSet>
+          <FunctionImport Name="sp_ID_Suscripcion" ReturnType="Collection(IntegracionDBBModel.sp_ID_Suscripcion_Result)" />
           <FunctionImport Name="sp_IngresosPorPlan" ReturnType="Collection(IntegracionDBBModel.sp_IngresosPorPlan_Result)" />
           <FunctionImport Name="sp_MostrarPagosPMA" ReturnType="Collection(IntegracionDBBModel.sp_MostrarPagosPMA_Result)">
-          <Parameter Name="cedula" Mode="In" Type="String" />
+            <Parameter Name="cedula" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_SuscripcionesPorPlan" ReturnType="Collection(IntegracionDBBModel.sp_SuscripcionesPorPlan_Result)" />
           <FunctionImport Name="sp_TestBanca" ReturnType="Collection(IntegracionDBBModel.sp_TestBanca_Result)">
-          <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_UltimoID_Suscripcion" ReturnType="Collection(String)" />
-          <FunctionImport Name="sp_ID_Suscripcion" ReturnType="Collection(IntegracionDBBModel.sp_ID_Suscripcion_Result)" />
         </EntityContainer>
+        <ComplexType Name="sp_ID_Suscripcion_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="cliente_id" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="plan_id" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="fecha_suscripcion" Nullable="false" />
+          <Property Type="DateTime" Name="creado_en" Nullable="true" Precision="23" />
+        </ComplexType>
         <ComplexType Name="sp_IngresosPorPlan_Result">
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="20" />
           <Property Type="Decimal" Name="Ingresos_Totales" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
         <ComplexType Name="sp_MostrarPagosPMA_Result">
-          <Property Type="String" Name="cliente_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="cedula" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="cod_pago" Nullable="false" MaxLength="255" />
-          <Property Type="Decimal" Name="precio" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="monto" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="String" Name="nServicio" Nullable="false" MaxLength="10" />
         </ComplexType>
         <ComplexType Name="sp_SuscripcionesPorPlan_Result">
           <Property Type="String" Name="Nombre_del_plan" Nullable="false" MaxLength="20" />
@@ -370,13 +377,6 @@
           <Property Type="String" Name="id" Nullable="false" MaxLength="255" />
           <Property Type="Decimal" Name="precio" Nullable="false" Precision="8" Scale="2" />
           <Property Type="DateTime" Name="fecha_suscripcion" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="sp_ID_Suscripcion_Result">
-          <Property Type="String" Name="id" Nullable="false" MaxLength="255" />
-          <Property Type="String" Name="cliente_id" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="plan_id" Nullable="true" MaxLength="10" />
-          <Property Type="DateTime" Name="fecha_suscripcion" Nullable="false" />
-          <Property Type="DateTime" Name="creado_en" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -442,6 +442,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ID_Suscripcion" FunctionName="IntegracionDBBModel.Store.sp_ID_Suscripcion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_ID_Suscripcion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="fecha_suscripcion" ColumnName="fecha_suscripcion" />
+                <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_IngresosPorPlan" FunctionName="IntegracionDBBModel.Store.sp_IngresosPorPlan">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_IngresosPorPlan_Result">
@@ -453,9 +464,10 @@
           <FunctionImportMapping FunctionImportName="sp_MostrarPagosPMA" FunctionName="IntegracionDBBModel.Store.sp_MostrarPagosPMA">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_MostrarPagosPMA_Result">
-                <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
                 <ScalarProperty Name="cod_pago" ColumnName="cod_pago" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="nServicio" ColumnName="nServicio" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -473,18 +485,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="precio" ColumnName="precio" />
                 <ScalarProperty Name="fecha_suscripcion" ColumnName="fecha_suscripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_UltimoID_Suscripcion" FunctionName="IntegracionDBBModel.Store.sp_UltimoID_Suscripcion" />
-          <FunctionImportMapping FunctionImportName="sp_ID_Suscripcion" FunctionName="IntegracionDBBModel.Store.sp_ID_Suscripcion">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IntegracionDBBModel.sp_ID_Suscripcion_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
-                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
-                <ScalarProperty Name="fecha_suscripcion" ColumnName="fecha_suscripcion" />
-                <ScalarProperty Name="creado_en" ColumnName="creado_en" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

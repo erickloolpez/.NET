@@ -33,6 +33,11 @@ namespace AccesoDatos
         public virtual DbSet<planes> planes { get; set; }
         public virtual DbSet<suscripcion> suscripcion { get; set; }
     
+        public virtual ObjectResult<sp_ID_Suscripcion_Result> sp_ID_Suscripcion()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ID_Suscripcion_Result>("sp_ID_Suscripcion");
+        }
+    
         public virtual ObjectResult<sp_IngresosPorPlan_Result> sp_IngresosPorPlan()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_IngresosPorPlan_Result>("sp_IngresosPorPlan");
@@ -59,16 +64,6 @@ namespace AccesoDatos
                 new ObjectParameter("id", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TestBanca_Result>("sp_TestBanca", idParameter);
-        }
-    
-        public virtual ObjectResult<string> sp_UltimoID_Suscripcion()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_UltimoID_Suscripcion");
-        }
-    
-        public virtual ObjectResult<sp_ID_Suscripcion_Result> sp_ID_Suscripcion()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ID_Suscripcion_Result>("sp_ID_Suscripcion");
         }
     }
 }

@@ -214,10 +214,10 @@
     <Content Include="Web References\APISP\sp_SuscripcionesPorPlan_Result.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\APISP\sp_TotalFacturadoPorCliente_Result.datasource">
+    <Content Include="Web References\APISP\sp_IngresosPorPlan_Result.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\APISP\sp_IngresosPorPlan_Result.datasource">
+    <Content Include="Web References\APISP\sp_TestBanca_Result.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\APISuscripcion\Api_GestionSuscripcion.wsdl" />

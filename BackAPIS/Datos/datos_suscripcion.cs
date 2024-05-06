@@ -90,10 +90,10 @@ namespace Datos
             foreach(var item in consulta)
             {
                 MostrarPagosPMA mostrar = new MostrarPagosPMA();
-                mostrar.cedula = item.cliente_id;
+                mostrar.cedula = item.cedula;
                 mostrar.cod_pago = item.cod_pago;
-                mostrar.monto = item.precio;
-                mostrar.nServicio = "Pago Membresia Awita";
+                mostrar.monto = item.monto;
+                mostrar.nServicio = $"Pago Membresia {item.nServicio} Awita";
                 lista.Add(mostrar);
             }
             return lista;

@@ -13,8 +13,9 @@ namespace AccesoDatos
     
     public partial class sp_MostrarPagosPMA_Result
     {
-        public string cliente_id { get; set; }
+        public string cedula { get; set; }
         public string cod_pago { get; set; }
-        public decimal precio { get; set; }
+        public decimal monto { get; set; }
+        public string nServicio { get; set; }
     }
 }
