@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard Awita | erickloolpez</title>
-    <link href="./src/style.css" rel="stylesheet" />
+    <link href="./src/styles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
 
 </head>
@@ -730,7 +730,7 @@
                             </div>
                         </div>
                         <input id="inputCI" class="inputCI" type="text" placeholder="CI" runat="server" />
-                        <asp:TextBox ID="TextBoxPlanID" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxPlanID" runat="server" Style="display: none"></asp:TextBox>
                         <asp:UpdatePanel ID="UpdatePanel9" runat="server">
                             <ContentTemplate>
                                 <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Enviar" />
