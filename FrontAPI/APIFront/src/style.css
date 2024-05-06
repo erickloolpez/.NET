@@ -530,7 +530,7 @@ nav {
     padding-left: 12px;
 }
 
-.payment-invoice button {
+#Button7 {
     width: 30%;
     height: 40px;
     border-radius: 4px;
@@ -539,6 +539,9 @@ nav {
     text-transform: uppercase;
     background-color: #5E17DF;
     padding: 8px;
+}
+
+#TextBoxPlanID{
 }
 
 

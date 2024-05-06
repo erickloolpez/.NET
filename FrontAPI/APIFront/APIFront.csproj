@@ -87,8 +87,8 @@
     <Content Include="src\assets\svg\mail.svg" />
     <Content Include="src\assets\svg\menu.svg" />
     <Content Include="src\assets\svg\x-twitter.svg" />
-    <Content Include="src\express.js" />
-    <Content Include="src\vars.js" />
+    <Content Include="src\navigation.js" />
+    <Content Include="src\lool.js" />
     <Content Include="src\main.js" />
     <Content Include="src\style.css" />
     <Content Include="Web.config" />

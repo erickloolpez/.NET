@@ -721,16 +721,21 @@
                         <p class="payment-info"></p>
                         <div class="payment-invoice--container">
                             <div class="payment-invoice--name">
-                                <input type="text" placeholder="Nombre" />
-                                <input type="text" placeholder="Apellido" />
+                                <input id="nombreCliente" type="text" placeholder="Nombre" runat="server" />
+                                <input id="apellidoCliente" type="text" placeholder="Apellido" runat="server" />
                             </div>
                             <div class="payment-invoice--info">
-                                <input type="email" placeholder="Email" />
-                                <input type="text" placeholder="Telefono" />
+                                <input id="emailCliente" type="email" placeholder="Email" runat="server" />
+                                <input id="telefonoCliente" type="text" placeholder="Telefono" />
                             </div>
                         </div>
-                        <input class="inputCI" type="text" placeholder="CI" />
-                        <button>Enviar</button>
+                        <input id="inputCI" class="inputCI" type="text" placeholder="CI" runat="server" />
+                        <asp:TextBox ID="TextBoxPlanID" runat="server"></asp:TextBox>
+                        <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Enviar" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
 
                 </div>
@@ -833,8 +838,8 @@
 
     </form>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script src="./src/vars.js"></script>
+    <script src="./src/lool.js"></script>
     <script src="./src/main.js"></script>
-    <script src="./src/express.js"></script>
+    <script src="./src/navigation.js"></script>
 </body>
 </html>

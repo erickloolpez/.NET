@@ -75,14 +75,17 @@ btnSediento.addEventListener('click', (event) => {
     paymentSection.style.display = 'grid';
 
     if (switchButton.checked) {
-        console.log('puto')
         location.hash = `?PLAN-4=${sedientoPrice.textContent}=Sediento-Anual`
         const [id, price, name] = location.hash.split('=')
         paymentInfo.innerHTML = `<strong>Plan:</strong> ${name} <br><strong>Precio:</strong> ${price}`
+        const [errValue, cleanValue] = id.split('?')
+        planIdText.value = `${cleanValue}`
     } else {
         location.hash = `?PLAN-1=${sedientoPrice.textContent}=Sediento-Mensual`
         const [id, price, name] = location.hash.split('=')
         paymentInfo.innerHTML = `<strong>Plan:</strong> ${name} <br><strong>Precio:</strong> ${price}`
+        const [errValue, cleanValue] = id.split('?')
+        planIdText.value = `${cleanValue}`
     }
 
     layoutSection.style.display = 'none';
@@ -98,10 +101,14 @@ btnRefrescado.addEventListener('click', (event) => {
         location.hash = `?PLAN-5=${refrescadoPrice.textContent}=Refrescado-Anual`
         const [id, price, name] = location.hash.split('=')
         paymentInfo.innerHTML = `<strong>Plan:</strong> ${name} <br><strong>Precio:</strong> ${price}`
+        const [errValue, cleanValue] = id.split('?')
+        planIdText.value = `${cleanValue}`
     } else {
         location.hash = `?PLAN-2=${refrescadoPrice.textContent}=Refrescado-Mensual`
         const [id, price, name] = location.hash.split('=')
         paymentInfo.innerHTML = `<strong>Plan:</strong> ${name} <br><strong>Precio:</strong> ${price}`
+        const [errValue, cleanValue] = id.split('?')
+        planIdText.value = `${cleanValue}`
     }
 
     layoutSection.style.display = 'none';
@@ -116,15 +123,29 @@ btnHidratado.addEventListener('click', (event) => {
         location.hash = `?PLAN-6=${hidratadoPrice.textContent}=Hidratado-Anual`
         const [id, price, name] = location.hash.split('=')
         paymentInfo.innerHTML = `<strong>Plan:</strong> ${name} <br><strong>Precio:</strong> ${price}`
+        const [errValue, cleanValue] = id.split('?')
+        planIdText.value = `${cleanValue}`
     } else {
         location.hash = `?PLAN-3=${hidratadoPrice.textContent}=Hidratado-Mensual`
         const [id, price, name] = location.hash.split('=')
         paymentInfo.innerHTML = `<strong>Plan:</strong> ${name} <br><strong>Precio:</strong> ${price}`
+        const [errValue, cleanValue] = id.split('?')
+        planIdText.value = `${cleanValue}`
     }
 
     layoutSection.style.display = 'none';
     planSection.style.display = 'none';
 })
+
+/*
+buttonPay.addEventListener('click', () => {
+    nombreCliente.value = ''
+    apellidoCliente.value = ''
+    emailCliente.value = ''
+    telefonoCliente.value = ''
+
+    console.log('it works')
+})*/
 
 navTwoLogo.addEventListener('click', () => {
     paymentSection.style.display = 'none';

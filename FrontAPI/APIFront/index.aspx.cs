@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -60,6 +61,53 @@ namespace APIFront
             FormView5.ChangeMode(FormViewMode.Insert);
         }
 
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            APISuscripcion.Api_GestionSuscripcion apiSus = new APISuscripcion.Api_GestionSuscripcion();
+            APICliente.Api_GestionCliente apiCli = new APICliente.Api_GestionCliente();
 
+            APICliente.cliente itemCliente;
+            APISuscripcion.suscripcion itemSuscripcion;
+
+            string nombre = nombreCliente.Value;
+            string apellido = apellidoCliente.Value;
+            string email = emailCliente.Value;
+            string plan_id = TextBoxPlanID.Text;
+            string cedula = inputCI.Value;
+
+
+            itemCliente = apiCli.LeerID(cedula);
+
+            if (itemCliente != null)
+            {
+                itemSuscripcion = new APISuscripcion.suscripcion();
+                itemSuscripcion.plan_id = plan_id;
+                itemSuscripcion.cliente_id = cedula;
+                apiSus.Insertar(itemSuscripcion);
+            }
+            else
+            {
+                itemCliente = new APICliente.cliente();
+                itemCliente.id = cedula;
+                itemCliente.nombre = nombre;
+                itemCliente.apellido = apellido;
+                itemCliente.email = email;
+                itemCliente.creado_en = DateTime.Now;
+                apiCli.Insertar(itemCliente);
+
+
+                itemSuscripcion = new APISuscripcion.suscripcion();
+                itemSuscripcion.plan_id = plan_id;
+                itemSuscripcion.cliente_id = cedula;
+                apiSus.Insertar(itemSuscripcion);
+
+            }
+
+            nombreCliente.Value = "";
+            apellidoCliente.Value = "";
+            emailCliente.Value = "";
+            inputCI.Value = "";
+
+        }
     }
 }
