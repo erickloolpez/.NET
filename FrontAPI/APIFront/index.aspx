@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard Awita | erickloolpez</title>
-    <link href="./src/styles.css" rel="stylesheet" />
+    <link href="./src/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
 
 </head>
@@ -712,33 +712,45 @@
                     </div>
 
                 </div>
-                <div class="payment-container">
-                    <div class="payment-img">
-                        <img src="src/assets/img/contact-img2.png" alt="contact" />
-                    </div>
-                    <div class="payment-invoice">
-                        <h1>Genera tu Factura</h1>
-                        <p class="payment-info"></p>
-                        <div class="payment-invoice--container">
-                            <div class="payment-invoice--name">
-                                <input id="nombreCliente" type="text" placeholder="Nombre" runat="server" />
-                                <input id="apellidoCliente" type="text" placeholder="Apellido" runat="server" />
+                <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+                    <ContentTemplate>
+                        <div class="payment-container" id="payContainer" runat="server">
+                            <div class="payment-img">
+                                <img src="src/assets/img/contact-img2.png" alt="contact" />
                             </div>
-                            <div class="payment-invoice--info">
-                                <input id="emailCliente" type="email" placeholder="Email" runat="server" />
-                                <input id="telefonoCliente" type="text" placeholder="Telefono" />
+                            <div class="payment-invoice">
+                                <h1>Genera tu Factura</h1>
+                                <p class="payment-info"></p>
+                                <div class="payment-invoice--container">
+                                    <div class="payment-invoice--name">
+                                        <input id="nombreCliente" type="text" placeholder="Nombre" runat="server" />
+                                        <input id="apellidoCliente" type="text" placeholder="Apellido" runat="server" />
+                                    </div>
+                                    <div class="payment-invoice--info">
+                                        <input id="emailCliente" type="text" placeholder="Email" runat="server" />
+                                        <input id="telefonoCliente" type="text" placeholder="Telefono" />
+                                    </div>
+                                </div>
+                                <input id="inputCI" class="inputCI" type="text" placeholder="CI" runat="server" />
+                                <asp:TextBox ID="TextBoxPlanID" runat="server" Style="display: none"></asp:TextBox>
+                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Enviar" />
+                                <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Button" />
                             </div>
                         </div>
-                        <input id="inputCI" class="inputCI" type="text" placeholder="CI" runat="server" />
-                        <asp:TextBox ID="TextBoxPlanID" runat="server" Style="display: none"></asp:TextBox>
-                        <asp:UpdatePanel ID="UpdatePanel9" runat="server">
-                            <ContentTemplate>
-                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Enviar" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
+                        <div class="payment-ready">
+                            <div class="spinner" id="payLoading" runat="server">
+                                <svg id="spinnerSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="48px" height="48px">
+                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+                                </svg>
+                            </div>
+                            <p id="spinnerP">Encuentre su orden en su banca Favorita....Movistar</p>
+                            <button id="spinnerB">Volver al Inicio</button>
+                        </div>
 
-                </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
             </div>
             <footer class="footer">
                 <div class="footer-description">
@@ -838,8 +850,9 @@
 
     </form>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script src="./src/lool.js"></script>
+    <script src="./src/node.js"></script>
     <script src="./src/main.js"></script>
-    <script src="./src/navigation.js"></script>
+    <script src="./src/rules.js"></script>
+    <script src="./src/spin.js"></script>
 </body>
 </html>

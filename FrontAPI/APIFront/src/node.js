@@ -46,9 +46,19 @@ const labelPlanH = document.querySelector('.labelPlanH');
 //payment info
 const paymentInfo = document.querySelector('.payment-info')
 const planIdText = document.getElementById('TextBoxPlanID')
+
+const spinner = document.querySelector('.spinner')
+const spinnerIcon = document.getElementById('spinnerSvg')
+const spinnerP = document.getElementById('spinnerP')
+const payMent = document.querySelector('.payment-ready')
+
+payMent.addEventListener('click', () => {
+    alert('vergaaa')
+})
+
 /*
 const nombreCliente = document.getElementById('nombreCliente')
 const apellidoCliente = document.getElementById('apellidoCliente')
 const emailCliente = document.getElementById('emailCliente')
 const telefonoCliente = document.getElementById('telefonoCliente')
-const buttonPay = document.getElementById('Button7')*/
+const cedulaCliente = document.getElementById('inputCI')*/

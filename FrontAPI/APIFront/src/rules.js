@@ -137,15 +137,6 @@ btnHidratado.addEventListener('click', (event) => {
     planSection.style.display = 'none';
 })
 
-/*
-buttonPay.addEventListener('click', () => {
-    nombreCliente.value = ''
-    apellidoCliente.value = ''
-    emailCliente.value = ''
-    telefonoCliente.value = ''
-
-    console.log('it works')
-})*/
 
 navTwoLogo.addEventListener('click', () => {
     paymentSection.style.display = 'none';
@@ -156,7 +147,12 @@ navTwoLogo.addEventListener('click', () => {
 
 })
 
+spinner.addEventListener('click', () => {
+    alert("puto de verga")
+})
+
 window.addEventListener('load', () => {
     location.hash = ''
     paymentSection.style.display = 'none'
 })
+

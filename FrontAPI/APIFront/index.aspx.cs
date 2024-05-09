@@ -103,11 +103,14 @@ namespace APIFront
 
             }
 
-            nombreCliente.Value = "";
-            apellidoCliente.Value = "";
-            emailCliente.Value = "";
-            inputCI.Value = "";
+            payContainer.Style["display"] = "none";
 
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            payContainer.Style.Add(HtmlTextWriterStyle.Display, "none");
+            payLoading.Attributes["class"] += " active";
         }
     }
 }
