@@ -695,10 +695,9 @@
                                 <input id="inputCI" class="inputCI" type="text" placeholder="CI" runat="server" />
                                 <asp:TextBox ID="TextBoxPlanID" runat="server" Style="display: none"></asp:TextBox>
                                 <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Enviar" />
-                                <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Button" />
                             </div>
                         </div>
-                        <div class="payment-ready">
+                        <div class="payment-ready" id="payLoading" runat="server">
                             <div id="lucky" class="spinner" runat="server">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="48px" height="48px">
                                     <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->

@@ -103,12 +103,8 @@ namespace APIFront
 
             }
             payContainer.Style.Add(HtmlTextWriterStyle.Display, "none");
-            lucky.Style.Add(HtmlTextWriterStyle.Display, "grid");
+            payLoading.Style.Add(HtmlTextWriterStyle.Display, "grid");
             lucky.Attributes["class"] += " active";
-        }
-
-        protected void Button8_Click(object sender, EventArgs e)
-        {
         }
     }
 }
