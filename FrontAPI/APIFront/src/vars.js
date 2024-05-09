@@ -47,15 +47,12 @@ const labelPlanH = document.querySelector('.labelPlanH');
 const paymentInfo = document.querySelector('.payment-info')
 const planIdText = document.getElementById('TextBoxPlanID')
 
-const spinner = document.querySelector('.spinner')
+const spinner = document.getElementById('lucky')
 const spinnerIcon = document.getElementById('spinnerSvg')
 const spinnerP = document.getElementById('spinnerP')
 const payMent = document.querySelector('.payment-ready')
 
-payMent.addEventListener('click', () => {
-    alert('vergaaa')
-})
-
+const payContainer = document.getElementById('payContainer')
 /*
 const nombreCliente = document.getElementById('nombreCliente')
 const apellidoCliente = document.getElementById('apellidoCliente')

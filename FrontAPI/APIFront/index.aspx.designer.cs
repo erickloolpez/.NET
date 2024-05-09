@@ -348,15 +348,6 @@ namespace APIFront
         protected global::System.Web.UI.WebControls.GridView GridView5;
 
         /// <summary>
-        /// Control startTable.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl startTable;
-
-        /// <summary>
         /// Control UpdatePanel9.
         /// </summary>
         /// <remarks>
@@ -364,6 +355,15 @@ namespace APIFront
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel9;
+
+        /// <summary>
+        /// Control optionOne.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl optionOne;
 
         /// <summary>
         /// Control payContainer.
@@ -438,12 +438,21 @@ namespace APIFront
         protected global::System.Web.UI.WebControls.Button Button8;
 
         /// <summary>
-        /// Control payLoading.
+        /// Control lucky.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl payLoading;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lucky;
+
+        /// <summary>
+        /// Control optionTwo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl optionTwo;
     }
 }

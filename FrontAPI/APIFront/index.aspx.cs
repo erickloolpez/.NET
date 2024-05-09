@@ -102,15 +102,13 @@ namespace APIFront
                 apiSus.Insertar(itemSuscripcion);
 
             }
-
-            payContainer.Style["display"] = "none";
-
+            payContainer.Style.Add(HtmlTextWriterStyle.Display, "none");
+            lucky.Style.Add(HtmlTextWriterStyle.Display, "grid");
+            lucky.Attributes["class"] += " active";
         }
 
         protected void Button8_Click(object sender, EventArgs e)
         {
-            payContainer.Style.Add(HtmlTextWriterStyle.Display, "none");
-            payLoading.Attributes["class"] += " active";
         }
     }
 }

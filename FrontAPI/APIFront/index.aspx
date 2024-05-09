@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard Awita | erickloolpez</title>
-    <link href="./src/style.css" rel="stylesheet" />
+    <link href="./src/life.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
 
 </head>
@@ -271,6 +271,11 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+            <!--Seccion de ADMIN-->
             <div runat="server" class="container-aside">
                 <aside>
                     <div class="toggle">
@@ -621,60 +626,99 @@
                         </asp:UpdatePanel>
                     </div>
 
-                    <!-- Recent Orders Table 
-                <div class="table" id="customers_table">
-                    <section class="table__header">
-                        <h1>Customer's Orders</h1>
-                        <div class="input-group">
-                            <input type="search" placeholder="Search Data...">
-                            <span class="material-icons-sharp">search
-                            </span>
-                        </div>
-                        <div class="export__file">
-                            <label for="export-file" class="export__file-btn" title="Export File"></label>
-                            <input type="checkbox" id="export-file">
-                            <div class="export__file-options">
-                                <label>Export As &nbsp; &#10140;</label>
-                                <label for="export-file" id="toPDF">
-                                    PDF
-                                    <img src="images/pdf.png" alt=""></label>
-                                <label for="export-file" id="toJSON">
-                                    JSON
-                                    <img src="images/json.png" alt=""></label>
-                                <label for="export-file" id="toCSV">
-                                    CSV
-                                    <img src="images/csv.png" alt=""></label>
-                                <label for="export-file" id="toEXCEL">
-                                    EXCEL
-                                    <img src="images/excel.png" alt=""></label>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="table__body">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Id <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th>Customer <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th>Location <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th>Order Date <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th>Status <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th>Amount <span class="icon-arrow">&UpArrow;</span></th>
-                                </tr>
-                            </thead>
-                            <tbody runat="server" id="startTable">
-                            </tbody>
-                        </table>
-                    </section>
-                </div>-->
-                    <!-- End of Recent Orders -->
-
                 </div>
             </div>
-            <div class="payment">
+
+
+
+            <!--Section of Payment-->
+            <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+                <ContentTemplate>
+                    <div class="payment" id="optionOne" runat="server">
+                        <div class="nav-two">
+                            <div class="nav-two--logo">
+                                <img src="src/assets/img/awita.png" alt="logo" id="navTwo-logo" />
+                            </div>
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <p>Principal</p>
+                                    </li>
+                                    <li>
+                                        <p>Acerca de</p>
+                                    </li>
+                                    <li>
+                                        <p>Galeria</p>
+                                    </li>
+                                    <li>
+                                        <p>Paginas</p>
+                                    </li>
+                                    <li>
+                                        <p>Servicios</p>
+                                    </li>
+                                    <li>
+                                        <p>Blog</p>
+                                    </li>
+                                    <li>
+                                        <p>Contacto</p>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="nav-two--menu">
+                                <div class="main-menu--circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24px" height="24px"
+                                        fill="white">
+                                        <path
+                                            d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="payment-container" id="payContainer" runat="server">
+                            <div class="payment-img">
+                                <img src="src/assets/img/contact-img2.png" alt="contact" />
+                            </div>
+                            <div class="payment-invoice">
+                                <h1>Genera tu Factura</h1>
+                                <p class="payment-info"></p>
+                                <div class="payment-invoice--container">
+                                    <div class="payment-invoice--name">
+                                        <input id="nombreCliente" type="text" placeholder="Nombre" runat="server" />
+                                        <input id="apellidoCliente" type="text" placeholder="Apellido" runat="server" />
+                                    </div>
+                                    <div class="payment-invoice--info">
+                                        <input id="emailCliente" type="text" placeholder="Email" runat="server" />
+                                        <input id="telefonoCliente" type="text" placeholder="Telefono" />
+                                    </div>
+                                </div>
+                                <input id="inputCI" class="inputCI" type="text" placeholder="CI" runat="server" />
+                                <asp:TextBox ID="TextBoxPlanID" runat="server" Style="display: none"></asp:TextBox>
+                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Enviar" />
+                                <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Button" />
+                            </div>
+                        </div>
+                        <div class="payment-ready">
+                            <div id="lucky" class="spinner" runat="server">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="48px" height="48px">
+                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+                                </svg>
+                            </div>
+                            <p>Encuentre su orden en su banca Favorita....Movistar</p>
+                            <button>Volver al Inicio</button>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+
+
+            <!--OPTIONTWO
+            <div class="payment" id="optionTwo" runat="server">
                 <div class="nav-two">
                     <div class="nav-two--logo">
-                        <img src="src/assets/img/awita.png" alt="logo" id="navTwo-logo" />
+                        <img src="src/assets/img/awita.png" alt="logo" />
                     </div>
                     <nav>
                         <ul>
@@ -712,46 +756,23 @@
                     </div>
 
                 </div>
-                <asp:UpdatePanel ID="UpdatePanel9" runat="server">
-                    <ContentTemplate>
-                        <div class="payment-container" id="payContainer" runat="server">
-                            <div class="payment-img">
-                                <img src="src/assets/img/contact-img2.png" alt="contact" />
-                            </div>
-                            <div class="payment-invoice">
-                                <h1>Genera tu Factura</h1>
-                                <p class="payment-info"></p>
-                                <div class="payment-invoice--container">
-                                    <div class="payment-invoice--name">
-                                        <input id="nombreCliente" type="text" placeholder="Nombre" runat="server" />
-                                        <input id="apellidoCliente" type="text" placeholder="Apellido" runat="server" />
-                                    </div>
-                                    <div class="payment-invoice--info">
-                                        <input id="emailCliente" type="text" placeholder="Email" runat="server" />
-                                        <input id="telefonoCliente" type="text" placeholder="Telefono" />
-                                    </div>
-                                </div>
-                                <input id="inputCI" class="inputCI" type="text" placeholder="CI" runat="server" />
-                                <asp:TextBox ID="TextBoxPlanID" runat="server" Style="display: none"></asp:TextBox>
-                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Enviar" />
-                                <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Button" />
-                            </div>
-                        </div>
-                        <div class="payment-ready">
-                            <div class="spinner" id="payLoading" runat="server">
-                                <svg id="spinnerSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="48px" height="48px">
-                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-                                </svg>
-                            </div>
-                            <p id="spinnerP">Encuentre su orden en su banca Favorita....Movistar</p>
-                            <button id="spinnerB">Volver al Inicio</button>
-                        </div>
-
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-
+                <div class="payment-ready">
+                    <div  class="spinner" runat="server">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="48px" height="48px">
+                            <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+                        </svg>
+                    </div>
+                    <p>Encuentre su orden en su banca Favorita....Movistar</p>
+                    <button>Volver al Inicio</button>
+                </div>
             </div>
+        </main>-->
+
+
+
+
+
+            <!--Section of Footer-->
             <footer class="footer">
                 <div class="footer-description">
                     <img src="src/assets/img/awita.png" alt="logo-awita" />
@@ -845,14 +866,10 @@
                 </div>
 
             </footer>
-        </main>
-
-
     </form>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script src="./src/node.js"></script>
+    <script src="./src/vars.js"></script>
     <script src="./src/main.js"></script>
     <script src="./src/rules.js"></script>
-    <script src="./src/spin.js"></script>
 </body>
 </html>
