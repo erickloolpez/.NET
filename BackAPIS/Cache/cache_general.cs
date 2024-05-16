@@ -21,10 +21,7 @@ namespace Cache
 
         public List<TEntidad> Listar()
         {
-            if (cacheEntidad == null)
-            {
                 cargarDatosDesdeBD();
-            }
             return cacheEntidad;
         }
 

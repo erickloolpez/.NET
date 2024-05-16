@@ -10,6 +10,14 @@
 
 /*display the tables of each control*/
 clienteBtn.addEventListener('click', () => {
+    clienteBtn.classList.add('active')
+
+    planBtn.classList.remove('active')
+    suscripcionBtn.classList.remove('active')
+    historialBtn.classList.remove('active')
+    facturaBtn.classList.remove('active')
+
+
     clienteTable.classList.remove('active-table');
     planTable.classList.add('active-table');
     suscripcionTable.classList.add('active-table');
@@ -18,6 +26,14 @@ clienteBtn.addEventListener('click', () => {
 })
 
 planBtn.addEventListener('click', () => {
+    planBtn.classList.add('active')
+
+    clienteBtn.classList.remove('active')
+    suscripcionBtn.classList.remove('active')
+    historialBtn.classList.remove('active')
+    facturaBtn.classList.remove('active')
+
+
     planTable.classList.remove('active-table');
     clienteTable.classList.add('active-table');
     suscripcionTable.classList.add('active-table');
@@ -26,6 +42,14 @@ planBtn.addEventListener('click', () => {
 })
 
 suscripcionBtn.addEventListener('click', () => {
+    suscripcionBtn.classList.add('active')
+
+    planBtn.classList.remove('active')
+    clienteBtn.classList.remove('active')
+    historialBtn.classList.remove('active')
+    facturaBtn.classList.remove('active')
+
+
     suscripcionTable.classList.remove('active-table');
     clienteTable.classList.add('active-table');
     planTable.classList.add('active-table');
@@ -34,6 +58,14 @@ suscripcionBtn.addEventListener('click', () => {
 })
 
 historialBtn.addEventListener('click', () => {
+    historialBtn.classList.add('active')
+
+    planBtn.classList.remove('active')
+    suscripcionBtn.classList.remove('active')
+    clienteBtn.classList.remove('active')
+    facturaBtn.classList.remove('active')
+
+
     historialTable.classList.remove('active-table');
     clienteTable.classList.add('active-table');
     planTable.classList.add('active-table');
@@ -42,6 +74,14 @@ historialBtn.addEventListener('click', () => {
 })
 
 facturaBtn.addEventListener('click', () => {
+    facturaBtn.classList.add('active')
+
+    planBtn.classList.remove('active')
+    suscripcionBtn.classList.remove('active')
+    historialBtn.classList.remove('active')
+    clienteBtn.classList.remove('active')
+
+
     facturaTable.classList.remove('active-table');
     historialTable.classList.add('active-table');
     clienteTable.classList.add('active-table');
@@ -145,6 +185,17 @@ navTwoLogo.addEventListener('click', () => {
 
     location.hash = ''
 
+})
+
+adminLogo.addEventListener('click', () => {
+    layoutSection.style.display = 'flex';
+    planSection.style.display = 'flex';
+    asideSection.style.display = 'none';
+    clienteTable.classList.remove('active-table');
+    planTable.classList.add('active-table');
+    suscripcionTable.classList.add('active-table');
+    historialTable.classList.add('active-table');
+    facturaTable.classList.add('active-table');
 })
 
 spinner.addEventListener('click', () => {

@@ -8,6 +8,8 @@ const paymentSection = document.querySelector('.payment')
 /* NavTwo logo*/
 const navTwoLogo = document.getElementById('navTwo-logo')
 
+/*logoAdmin*/
+const adminLogo = document.getElementById('adminLogo')
 
 /*Picture of the login*/
 const loginPicture = document.querySelector('.main-menu--circle');
@@ -19,6 +21,8 @@ const planTable = document.getElementById('planTable');
 const suscripcionTable = document.getElementById('suscripcionTable');
 const historialTable = document.getElementById('historialTable');
 const facturaTable = document.getElementById('facturaTable');
+
+
 const clienteBtn = document.querySelector('.btnClientes');
 const planBtn = document.querySelector('.btnPlanes');
 const suscripcionBtn = document.querySelector('.btnSuscripcion');

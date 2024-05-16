@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard Awita | erickloolpez</title>
-    <link href="./src/life.css" rel="stylesheet" />
+    <link href="./src/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
 
 </head>
@@ -275,11 +275,11 @@
 
 
 
-            <!--Seccion de ADMIN-->
+            <!--Seccion de ADMIN se llama aside porque nos jalamos con el nombre-->
             <div runat="server" class="container-aside">
                 <aside>
                     <div class="toggle">
-                        <div class="logo">
+                        <div class="logo" id="adminLogo">
                             <img src="src/assets/img/awita.png" />
                         </div>
                         <div class="close" id="close-btn">
@@ -289,62 +289,41 @@
                     </div>
 
                     <div class="sidebar">
-                        <a href="#">
-                            <span class="material-icons-sharp">dashboard
-                            </span>
-                            <h3>Dashboard</h3>
-                        </a>
                         <a class="btnPlanes" href="#">
-                            <span class="material-icons-sharp">person_outline
+                            <span class="material-icons-sharp">wallet
                             </span>
                             <h3>Planes</h3>
                         </a>
                         <a class="btnSuscripcion" href="#">
-                            <span class="material-icons-sharp">receipt_long
+                            <span class="material-icons-sharp">shopping_bag
                             </span>
                             <h3>Suscripciones</h3>
                         </a>
-                        <a class="btnClientes active" href="#">
-                            <span class="material-icons-sharp">insights
+                        <a class="btnClientes" href="#">
+                            <span class="material-icons-sharp">person
                             </span>
                             <h3>Clientes</h3>
                         </a>
                         <a class="btnFactura" href="#">
-                            <span class="material-icons-sharp">mail_outline
+                            <span class="material-icons-sharp">receipt_long
                             </span>
                             <h3>Facturas</h3>
                             <span class="message-count">27</span>
                         </a>
                         <a class="btnHistorial" href="#">
-                            <span class="material-icons-sharp">inventory
+                            <span class="material-icons-sharp">manage_search
                             </span>
-                            <h3>Facturas</h3>
-                        </a>
-                        <a href="#">
-                            <span class="material-icons-sharp">report_gmailerrorred
-                            </span>
-                            <h3>Reports</h3>
-                        </a>
-                        <a href="#">
-                            <span class="material-icons-sharp">settings
-                            </span>
-                            <h3>Settings</h3>
-                        </a>
-                        <a href="#">
-                            <span class="material-icons-sharp">add
-                            </span>
-                            <h3>New Login</h3>
-                        </a>
-                        <a href="#">
-                            <span class="material-icons-sharp">logout
-                            </span>
-                            <h3>Logout</h3>
+                            <h3>Historial</h3>
                         </a>
                     </div>
                 </aside>
-                <!--<img id="discretBg" src="./Src/Assets/img/backgroundTwo.png" />-->
                 <div class="container-main">
-                    <!-- Analyses -->
+
+
+
+
+
+                    <!-- Analysis Section the circles -->
                     <div class="analyse">
                         <div class="sales">
                             <div class="status">
@@ -397,7 +376,16 @@
                     </div>
                     <!-- End of Analyses -->
 
-                    <!-- New Users Section -->
+
+
+
+
+
+
+
+
+
+                    <!-- Tables Section -->
                     <div class="sectionCharts">
                         <div class="containerCharts">
                             <div class="chart-container">
@@ -583,7 +571,7 @@
                                 <div class="updatePanel-header">
                                     <div class="updatePanel-header--divider">
                                         <h1>Busqueda de Historial</h1>
-                                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="TextBox5" runat="server" AutoPostBack="true"></asp:TextBox>
                                         <span class="material-icons-sharp searchIcon">search</span>
                                     </div>
                                     <asp:Button ID="Button6" runat="server" Text="Button" />
@@ -631,10 +619,8 @@
 
 
 
-            <!--Section of Payment-->
-            <asp:UpdatePanel ID="UpdatePanel9" runat="server">
-                <ContentTemplate>
-                    <div class="payment" id="optionOne" runat="server">
+            <!--Section of Payment the purpose of this text is to been visible for the search-->
+            <div class="payment" id="optionOne" runat="server">
                         <div class="nav-two">
                             <div class="nav-two--logo">
                                 <img src="src/assets/img/awita.png" alt="logo" id="navTwo-logo" />
@@ -675,6 +661,8 @@
                             </div>
 
                         </div>
+                <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+                    <ContentTemplate>
                         <div class="payment-container" id="payContainer" runat="server">
                             <div class="payment-img">
                                 <img src="src/assets/img/contact-img2.png" alt="contact" />
@@ -704,171 +692,117 @@
                                     <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
                                 </svg>
                             </div>
-                            <p>Encuentre su orden en su banca Favorita....Movistar</p>
+                            <p>Encuentre su orden en su banca Favorita....</p>
                             <button>Volver al Inicio</button>
                         </div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+
+        </main>
 
 
 
-            <!--OPTIONTWO
-            <div class="payment" id="optionTwo" runat="server">
-                <div class="nav-two">
-                    <div class="nav-two--logo">
-                        <img src="src/assets/img/awita.png" alt="logo" />
-                    </div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <p>Principal</p>
-                            </li>
-                            <li>
-                                <p>Acerca de</p>
-                            </li>
-                            <li>
-                                <p>Galeria</p>
-                            </li>
-                            <li>
-                                <p>Paginas</p>
-                            </li>
-                            <li>
-                                <p>Servicios</p>
-                            </li>
-                            <li>
-                                <p>Blog</p>
-                            </li>
-                            <li>
-                                <p>Contacto</p>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="nav-two--menu">
-                        <div class="main-menu--circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24px" height="24px"
-                                fill="white">
-                                <path
-                                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-                            </svg>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="payment-ready">
-                    <div  class="spinner" runat="server">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="48px" height="48px">
-                            <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+
+        <!--Section of Footer-->
+        <footer class="footer">
+            <div class="footer-description">
+                <img src="src/assets/img/awita.png" alt="logo-awita" />
+                <p>Ser la principal plataforma de membresías de AWA reconocida a nivel mundial, brindando un servicio inigualable que mejora la calidad de vida de nuestros miembros.</p>
+                <div class="footer-description--icons">
+                    <div class="icons-footer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="white"
+                            viewBox="0 0 512 512">
+                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path
+                                d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
                         </svg>
                     </div>
-                    <p>Encuentre su orden en su banca Favorita....Movistar</p>
-                    <button>Volver al Inicio</button>
+                    <div class="icons-footer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="white"
+                            viewBox="0 0 512 512">
+                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path
+                                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+                        </svg>
+                    </div>
+                    <div class="icons-footer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="white"
+                            viewBox="0 0 448 512">
+                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path
+                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
-        </main>-->
-
-
-
-
-
-            <!--Section of Footer-->
-            <footer class="footer">
-                <div class="footer-description">
-                    <img src="src/assets/img/awita.png" alt="logo-awita" />
-                    <p>Ser la principal plataforma de membresías de AWA reconocida a nivel mundial, brindando un servicio inigualable que mejora la calidad de vida de nuestros miembros.</p>
-                    <div class="footer-description--icons">
-                        <div class="icons-footer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="white"
-                                viewBox="0 0 512 512">
-                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
-                            </svg>
-                        </div>
-                        <div class="icons-footer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="white"
-                                viewBox="0 0 512 512">
-                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
-                            </svg>
-                        </div>
-                        <div class="icons-footer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="white"
-                                viewBox="0 0 448 512">
-                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                <path
-                                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
-                            </svg>
-                        </div>
-                    </div>
+            <div class="footer-list">
+                <div class="footer-list--content">
+                    <h2>Nuestros Links</h2>
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Acerca de</a>
+                        </li>
+                        <li>
+                            <a href="#">Servicios</a>
+                        </li>
+                        <li>
+                            <a href="#">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="footer-list">
-                    <div class="footer-list--content">
-                        <h2>Nuestros Links</h2>
-                        <ul>
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">Acerca de</a>
-                            </li>
-                            <li>
-                                <a href="#">Servicios</a>
-                            </li>
-                            <li>
-                                <a href="#">Blog</a>
-                            </li>
-                            <li>
-                                <a href="#"></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-list--content ">
-                        <h2>Nuestros Servicios</h2>
-                        <ul>
-                            <li>
-                                <a href="#">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="#">Soporte</a>
-                            </li>
-                            <li>
-                                <a href="#">Privacidad</a>
-                            </li>
-                            <li>
-                                <a href="#">Terminos & Condiciones</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-list--content">
-                        <h2>Nuestros Links</h2>
-                        <ul>
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">Acerca de</a>
-                            </li>
-                            <li>
-                                <a href="#">Servicios</a>
-                            </li>
-                            <li>
-                                <a href="#">Blog</a>
-                            </li>
-                            <li>
-                                <a href="#"></a>
-                            </li>
-                        </ul>
-                    </div>
-
+                <div class="footer-list--content ">
+                    <h2>Nuestros Servicios</h2>
+                    <ul>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">Soporte</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="#">Terminos & Condiciones</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-list--content">
+                    <h2>Nuestros Links</h2>
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Acerca de</a>
+                        </li>
+                        <li>
+                            <a href="#">Servicios</a>
+                        </li>
+                        <li>
+                            <a href="#">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                    </ul>
                 </div>
 
-            </footer>
+            </div>
+
+        </footer>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script src="./src/vars.js"></script>
+    <script src="./src/node.js"></script>
     <script src="./src/main.js"></script>
-    <script src="./src/rules.js"></script>
+    <script src="./src/navigation.js"></script>
 </body>
 </html>
