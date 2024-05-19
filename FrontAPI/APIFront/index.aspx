@@ -140,7 +140,6 @@
                             </svg>
                         </div>
                     </div>
-
                 </div>
                 <div class="main-cover">
                     <div class="cover-main">
@@ -802,6 +801,7 @@
     </form>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="./src/node.js"></script>
+    <script src="./src/services.js"></script>
     <script src="./src/main.js"></script>
     <script src="./src/navigation.js"></script>
 </body>

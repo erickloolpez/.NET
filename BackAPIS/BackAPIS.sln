@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIBacks", "APIBacks\APIBacks.csproj", "{FD89118C-52DD-430B-8800-48EAD7D14589}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIBack_REST", "APIBack_REST\APIBack_REST.csproj", "{CBC7D4D0-8889-4BC1-A087-A334D999EDB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FD89118C-52DD-430B-8800-48EAD7D14589}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD89118C-52DD-430B-8800-48EAD7D14589}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD89118C-52DD-430B-8800-48EAD7D14589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC7D4D0-8889-4BC1-A087-A334D999EDB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC7D4D0-8889-4BC1-A087-A334D999EDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC7D4D0-8889-4BC1-A087-A334D999EDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC7D4D0-8889-4BC1-A087-A334D999EDB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
